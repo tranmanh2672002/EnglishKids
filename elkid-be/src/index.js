@@ -1,20 +1,21 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-app.use(cors())
-app.use(express.json())
+const route = require('./routes');
+// const userRouter =require('./routes/userRouter')
 
+
+app.use(cors());
+app.use(express.json());
+
+const PORT = 3001;
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
-})
+});
 
-app.post('/', (req, res) => {
-    const {username, password }=req.body;
-    console.log(username, '-', password);
-    res.send('failed')
-})
+route(app)
 
-app.listen(3001, () => {
-    console.log('Server start');
+app.listen(PORT, () => {
+    console.log(`App listening at http://localhost:${PORT}`);
 })

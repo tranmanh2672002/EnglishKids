@@ -13,8 +13,7 @@ function FormLogin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:3001/', { username, password });
-        console.log(res);
+        const res = await axios.post('http://localhost:3001/user/login', { username, password });
     };
 
     console.log(username, password);
@@ -49,6 +48,7 @@ function FormLogin() {
                             className="login__input"
                             value={password}
                             type="password"
+                            autoComplete='off'
                             fullWidth
                             id="login-password"
                             label="Mật khẩu"

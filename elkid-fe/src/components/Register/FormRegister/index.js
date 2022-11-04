@@ -34,7 +34,7 @@ function FormRegister() {
                         <TextField
                             className="register__input"
                             fullWidth
-                            id="register-user"
+                            id="register-name"
                             label="Tên người dùng"
                             variant="standard"
                             color="secondary"
@@ -50,6 +50,7 @@ function FormRegister() {
                         <TextField
                             className="register__input"
                             type="password"
+                            autoComplete='off'
                             fullWidth
                             id="register-password"
                             label="Mật khẩu"
@@ -61,7 +62,8 @@ function FormRegister() {
                             className="register__input"
                             type="password"
                             fullWidth
-                            id="register-password"
+                            autoComplete='off'
+                            id="register-password-x2"
                             label="Nhập lại mật khẩu"
                             variant="standard"
                             color="secondary"
