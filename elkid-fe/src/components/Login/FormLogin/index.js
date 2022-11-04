@@ -13,7 +13,8 @@ function FormLogin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('', { username: username, password: password });
+        const res = await axios.post('http://localhost:3001/', { username, password });
+        console.log(res);
     };
 
     console.log(username, password);
