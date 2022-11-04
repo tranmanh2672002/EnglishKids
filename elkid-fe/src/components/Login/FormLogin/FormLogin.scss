@@ -16,12 +16,15 @@
 
 .login__header {
     color: var(--primary-color);
+    padding: 20px 0 40px 0;
 }
 
 .login__input {
+    margin-top: 25px !important;
 }
 
 .formLogin__link {
+    padding: 30px 0 !important;
     width: 100%;
     display: flex;
     justify-content: flex-end;

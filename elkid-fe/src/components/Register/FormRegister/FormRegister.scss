@@ -23,30 +23,15 @@
 
 .register__header {
     color: var(--primary-color);
+    padding-top: 20px;
 }
 
 .register__input {
+    margin-top: 10px !important;
 }
 
-.formRegister__link {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    a {
-        text-decoration: none;
-        font-size: 1.2rem;
-        color: var(--primary-color);
-        padding-left: 10px;
-        &:hover {
-            color: #600670;
-        }
-    }
-
-    .formRegister__link-separate {
-        display: block;
-        padding-right: 10px;
-        border-right: 2px solid #ccc;
-    }
+.register__btn {
+    margin-top: 40px !important;
 }
 
 .wrapper__right {
