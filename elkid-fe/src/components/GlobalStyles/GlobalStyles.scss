@@ -1,0 +1,35 @@
+@import 'normalize.css';
+
+:root {
+    // Default Layout Header
+    --default-layout-width-sidebar: 240px;
+    --default-layout-height-header: 70px;
+    --default-layout-height-play-control: 90px;
+    --primary-color: #9c27b0;
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #dadab9;
+}
+
+html {
+    // font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--white-color);
+}
