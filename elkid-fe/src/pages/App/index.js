@@ -1,5 +1,20 @@
+import { Link } from 'react-router-dom';
+
 function AppMain() {
-    return <h1>AppMain</h1>;
+    const access = localStorage.getItem('login') === 'true';
+    console.log(access);
+    return (
+        <>
+            {access ? (
+                <h2>App</h2>
+            ) : (
+                <Link to="/login" style={{ color: 'blue' }}>
+                    {' '}
+                    Go to login
+                </Link>
+            )}
+        </>
+    );
 }
 
 export default AppMain;

@@ -20,6 +20,7 @@ function FormLogin() {
             if (res.data.login) {
                 setUsername('');
                 setPassword('');
+                localStorage.setItem('login', 'true');
                 navigate('/app');
             } else {
                 alert(res.data.msg);
