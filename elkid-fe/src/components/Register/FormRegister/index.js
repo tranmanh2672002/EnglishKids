@@ -7,12 +7,14 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import logo from '~/assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function FormRegister() {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordX2, setPasswordX2] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -24,19 +26,16 @@ function FormRegister() {
     });
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setName('');
-        setUsername('');
-        setPassword('');
-        setPasswordX2('');
         try {
             const res = await axios.post('http://localhost:3001/user/register', {
                 name,
                 username,
                 password,
-                passwordX2,
             });
-            console.log(res);
+            if (res.data.register) {
+                navigate('/login');
+            }
+            alert(res.data.msg);
         } catch (err) {
             console.log('Register failed: ' + err.message);
         }

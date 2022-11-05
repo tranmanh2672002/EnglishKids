@@ -5,22 +5,27 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import logo from '~/assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 function FormLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setUsername('');
-        setPassword('');
+
+    const handleSubmit = async () => {
         try {
             const res = await axios.post('http://localhost:3001/user/login', { username, password });
-            console.log(res);
+            if (res.data.login) {
+                setUsername('');
+                setPassword('');
+                navigate('/app');
+            } else {
+                alert(res.data.msg);
+            }
         } catch (err) {
-            console.log('Login failed: ' + err.message);
+            console.log('Login fe failed: ' + err.message);
         }
     };
 

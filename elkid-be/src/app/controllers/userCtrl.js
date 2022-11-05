@@ -1,14 +1,55 @@
+const Users = require("../models/userModel");
+const bcrypt = require("bcrypt");
+
 const userCtrl = {
-  login: async (req, res, next) => {
-    const { username, password } = req.body;
-    console.log(username, "-", password);
-    res.send("Login successful");
+  login: async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const user = await Users.findOne({ username });
+
+      if (!user) {
+        return res.json({ msg: "Không tìm thấy email", login: false });
+      }
+      // const isMatch = (password === user.password);
+      const isMatch = await bcrypt.compare(password, user.password);
+      console.log(isMatch);
+      if (!isMatch) {
+        return res.json({ msg: "Mật khẩu không chính xác", login: false });
+      }
+
+      res.json({ msg: "Đăng nhập thành công", login: true });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
   },
 
-  register: async (req, res, next) => {
-    const { name, username, password, passwordX2 } = req.body;
-    console.log(name, "-", username, "-", password, "-", passwordX2);
-    res.send("Register successful");
+  register: async (req, res) => {
+    try {
+      const { name, username } = req.body;
+
+      console.log(name + ' ' + username);
+
+      // check email is already exist
+      const user = await Users.findOne({ username });
+      if (user) {
+        return res.json({ msg: "Email đã được đăng kí", register: false });
+      }
+
+      // Password Encryption
+      const passwordHash = await bcrypt.hash(req.body.password, 10);
+      const newUser = new Users({
+        name,
+        username, 
+        password: passwordHash,
+      });
+
+      // Save mongodb
+      const saveUser = await newUser.save();
+
+      res.json({msg: "Đăng ký thành công", register: true });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
   },
 };
 
