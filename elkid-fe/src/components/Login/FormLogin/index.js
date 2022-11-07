@@ -13,7 +13,6 @@ function FormLogin() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
     const handleSubmit = async () => {
         try {
             const res = await axios.post('http://localhost:3001/user/login', { username, password });
@@ -34,6 +33,13 @@ function FormLogin() {
         <div className="login__wrapper">
             <div className="wrapper__left">
                 <ValidatorForm className="wrapper__left-content" onSubmit={handleSubmit}>
+                    <div className="login__wrapper--home">
+                        <Link to="/">
+                            <IconButton aria-label="delete" size="large" color="secondary">
+                                <HomeIcon />
+                            </IconButton>
+                        </Link>
+                    </div>
                     <Typography variant="h4" className="login__header">
                         Đăng nhập
                     </Typography>
@@ -90,13 +96,6 @@ function FormLogin() {
                 <div className="logo">
                     <img src={logo} alt="Logo" />
                 </div>
-            </div>
-            <div>
-                <Link to="/">
-                    <IconButton aria-label="delete" size="large" color="secondary">
-                        <HomeIcon />
-                    </IconButton>
-                </Link>
             </div>
         </div>
     );

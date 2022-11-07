@@ -1,17 +1,10 @@
 .register__wrapper {
+    height: 100vh;
     display: flex;
-    margin: 20px 40px;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 40px;
+    background-color: rgb(233, 245, 250);
 }
 
-.wrapper__left {
-    width: 40%;
-}
-
-.wrapper__left-content {
-    margin: 20px 0 0 40px;
-}
 
 .header_wrapper {
     width: 100%;
@@ -22,25 +15,24 @@
 
 .register__header {
     color: var(--primary-color);
-    padding-top: 20px;
 }
 
 .register__input {
-    margin-top: 10px !important;
+    margin-top: 20px !important;
 }
 
 .register__btn {
     margin-top: 40px !important;
 }
 
-.wrapper__right {
-    width: 60%;
-    align-items: center;
+
+.register__btn-login {
+    color: rgb(156, 39, 176);
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    margin-top: 20px;
 }
 
-.logo {
-    width: 100%;
-    text-align: center;
-    img {
-    }
-}
+

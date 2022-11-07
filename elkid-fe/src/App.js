@@ -1,15 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { publicRoutes } from './routes';
+import { publicRoutes, privateRoutes } from './routes';
 function App() {
     return (
-            <Router>
+        <Router>
             <div className="App">
-                <Routes>
-                    {publicRoutes.map((route, i) => {
-                        return <Route key={i} path={route.path} element={<route.component />} />;
-                    })}
-                </Routes>
+                {localStorage.getItem('login') === 'true' ? (
+                    <Routes>
+                        {publicRoutes.map((route, i) => {
+                            return <Route key={i} path={route.path} element={<route.component />} />;
+                        })}
+                        {privateRoutes.map((route, i) => {
+                            return <Route key={i} path={route.path} element={<route.component />} />;
+                        })}
+                    </Routes>
+                ) : (
+                    <Routes>
+                        {publicRoutes.map((route, i) => {
+                            return <Route key={i} path={route.path} element={<route.component />} />;
+                        })}
+                    </Routes>
+                )}
             </div>
         </Router>
     );

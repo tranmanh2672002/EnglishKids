@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
+import MenuApp from '~/components/MenuApp';
 
 function AppMain() {
     const access = localStorage.getItem('login') === 'true';
-    console.log(access);
     return (
         <>
             {access ? (
-                <h2>App</h2>
+                <MenuApp />
             ) : (
                 <Link to="/login" style={{ color: 'blue' }}>
                     {' '}

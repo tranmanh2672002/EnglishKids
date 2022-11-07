@@ -1,0 +1,93 @@
+.App__wrapper {
+    height: 100vh;
+    display: flex;
+}
+
+.App__background {
+    width: 70%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: rgb(233, 245, 250);
+}
+
+.App__list {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    position: relative;
+}
+
+.App__list--avatar {
+    position: absolute !important;
+    right: 0;
+    cursor: pointer;
+    :hover {
+        opacity: 0.8;
+    }
+}
+
+.App__header {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.App__Item {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    &:hover {
+        background-color: rgb(108, 25, 122);
+    }
+}
+
+.App__user--selection {
+    width: 140px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    ul {
+        padding: 6px 0;
+    }
+    li {
+        color: var(--white-color);
+        list-style: none;
+        font-size: 1.2rem;
+        text-align: center;
+        cursor: pointer;
+        margin: 0 6px;
+        padding: 4px 0;
+        &:hover {
+            background-color: rgb(108, 25, 122);
+        }
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid var(--primary-color);
+        top: -8px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .App__Item {
+        width: 240px;
+    }
+
+    .App__background {
+        width: 90%;
+    }
+
+    .App__list--avatar {
+        position: relative !important;
+    }
+}

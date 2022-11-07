@@ -45,14 +45,16 @@ function FormRegister() {
         <div className="register__wrapper">
             <div className="wrapper__left">
                 <ValidatorForm className="wrapper__left-content" onSubmit={handleSubmit}>
+                    <div className="login__wrapper--home">
+                        <Link to="/">
+                            <IconButton aria-label="delete" size="large" color="secondary">
+                                <HomeIcon />
+                            </IconButton>
+                        </Link>
+                    </div>
                     <div className="header_wrapper">
                         <Typography variant="h4" className="register__header">
                             Đăng ký
-                        </Typography>
-                        <Typography variant="h5" className="register__header">
-                            <Link style={{ color: '#9c27b0' }} to="/login">
-                                Đăng nhập
-                            </Link>
                         </Typography>
                     </div>
 
@@ -122,6 +124,9 @@ function FormRegister() {
                     >
                         Đăng ký
                     </Button>
+                    <Link className="register__btn-login" to="/login">
+                        Đăng nhập
+                    </Link>
                 </ValidatorForm>
             </div>
 
@@ -129,13 +134,6 @@ function FormRegister() {
                 <div className="logo">
                     <img src={logo} alt="Logo" />
                 </div>
-            </div>
-            <div>
-                <Link to="/">
-                    <IconButton aria-label="delete" size="large" color="secondary">
-                        <HomeIcon />
-                    </IconButton>
-                </Link>
             </div>
         </div>
     );
