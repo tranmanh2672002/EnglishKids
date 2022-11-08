@@ -11,6 +11,8 @@ import axios from 'axios';
 function FormLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
@@ -22,7 +24,8 @@ function FormLogin() {
                 localStorage.setItem('login', 'true');
                 navigate('/app');
             } else {
-                alert(res.data.msg);
+                setError(res.data.msg);
+                setPassword('');
             }
         } catch (err) {
             console.log('Login fe failed: ' + err.message);
@@ -43,6 +46,7 @@ function FormLogin() {
                     <Typography variant="h4" className="login__header">
                         Đăng nhập
                     </Typography>
+                    {/* Email */}
                     <TextValidator
                         className="login__input"
                         value={username}
@@ -55,7 +59,9 @@ function FormLogin() {
                         validators={['required', 'isEmail']}
                         errorMessages={['Vui lòng nhập email', 'Email không hợp lệ']}
                         onChange={(e) => setUsername(e.target.value)}
+                        onFocus={() => setError('')}
                     />
+                    {/* Password */}
                     <TextValidator
                         className="login__input"
                         value={password}
@@ -69,7 +75,10 @@ function FormLogin() {
                         validators={['required']}
                         errorMessages={['Vui lòng nhập mật khẩu']}
                         onChange={(e) => setPassword(e.target.value)}
+                        onFocus={() => setError('')}
                     />
+
+                    <span className="validate__error">{error}</span>
 
                     <div className="formLogin__link">
                         <Link className="formLogin__link-separate" to="/register">
@@ -78,14 +87,16 @@ function FormLogin() {
                         <Link to="">Quên mật khẩu?</Link>
                     </div>
 
+                    {/* Submit */}
                     <Button
-                        className="login__btn"
+                        className="login__btn btn-grad"
                         fullWidth
                         type="submit"
                         size="large"
                         color="secondary"
                         variant="contained"
                         startIcon={<SendIcon />}
+                        onClick={() => setError('')}
                     >
                         Đăng nhập
                     </Button>

@@ -45,13 +45,13 @@ function MenuApp() {
                             />
                         </Tippy>
                         <div className="App__header">English Kids</div>
-                        <Link to="/app/learn" className="App__Item">
-                            Chọn chủ đề{' '}
+                        <Link to="/app/learn" className="App__Item btn-grad">
+                            Chọn chủ đề
                         </Link>
-                        <Link to="/app/learn" className="App__Item">
+                        <Link to="/app/exam" className="App__Item btn-grad">
                             Bài kiểm tra
                         </Link>
-                        <Link to="/app/learn" className="App__Item">
+                        <Link to="/app/rank" className="App__Item btn-grad">
                             Xếp hạng
                         </Link>
                     </div>

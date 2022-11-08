@@ -8,7 +8,7 @@ const userCtrl = {
       const user = await Users.findOne({ username });
 
       if (!user) {
-        return res.json({ msg: "Không tìm thấy email", login: false });
+        return res.json({ msg: "Email không tồn tại", login: false });
       }
       // const isMatch = (password === user.password);
       const isMatch = await bcrypt.compare(password, user.password);

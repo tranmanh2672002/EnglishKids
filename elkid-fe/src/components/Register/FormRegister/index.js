@@ -114,7 +114,7 @@ function FormRegister() {
                     />
 
                     <Button
-                        className="register__btn"
+                        className="register__btn btn-grad"
                         fullWidth
                         type="submit"
                         size="large"
@@ -124,7 +124,7 @@ function FormRegister() {
                     >
                         Đăng ký
                     </Button>
-                    <Link className="register__btn-login" to="/login">
+                    <Link className="register__btn-login " to="/login">
                         Đăng nhập
                     </Link>
                 </ValidatorForm>

@@ -1,5 +1,11 @@
+import ThemeLayout from '~/components/ThemeLayout';
+
 function LearnTheme() {
-    return ( <h2>Chủ đề</h2> );
+    return (
+        <>
+            <ThemeLayout />
+        </>
+    );
 }
 
 export default LearnTheme;

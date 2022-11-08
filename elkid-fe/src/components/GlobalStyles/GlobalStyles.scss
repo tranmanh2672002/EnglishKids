@@ -33,3 +33,22 @@ a {
     text-decoration: none;
     color: var(--white-color);
 }
+
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color);
+}
+
+#style-2::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+}
+
+#style-2::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#style-2::-webkit-scrollbar-thumb {
+    background-color: #fff;
+}
