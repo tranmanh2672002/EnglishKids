@@ -24,7 +24,9 @@ function LearnImg() {
         getData();
     }, [id]);
 
-    console.log(imagesArray);
+    const handleClick = (e) => {
+        new Audio(e.target.dataset.sound).play();
+    }
 
     return (
         <>
@@ -46,8 +48,8 @@ function LearnImg() {
                         {imagesArray.length ? (
                             imagesArray.map((image) => {
                                 return (
-                                    <div className="LearnImg__item">
-                                        <input type="image" src={image.link} alt="image" />
+                                    <div key={image._id} className="LearnImg__item">
+                                        <input type="image" src={image.link} data-sound={image.voice} onClick={handleClick} alt="image" />
                                     </div>
                                 );
                             })
