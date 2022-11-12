@@ -1,0 +1,34 @@
+.LearnVd__wrapper {
+    height: 100vh;
+    display: flex;
+} 
+
+.LearnVd__container {
+    width: 70%;
+    height: 90vh;
+    margin: auto;
+    border-radius: 10px;
+} 
+
+.LearnVd__nav {
+    display: flex;
+    justify-content: space-between;
+} 
+
+.LearnVd__title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.LearnVd__content {
+    display: flex;
+}
+
+.LearnVd__content--video {
+    margin: auto;
+    margin-top: 20px;
+    width: 80%;
+    height: 70vh;
+    border: none;
+}

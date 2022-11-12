@@ -1,0 +1,54 @@
+.LearnImg__wrapper {
+    height: 100vh;
+    display: flex;
+}
+
+.LearnImg__container {
+    width: 70%;
+    height: 90vh;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.LearnImg__nav {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.LearnImg__content {
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+    overflow-y: scroll;
+}
+
+.LearnImg__item {
+    width: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 28px;
+    input {
+        width: 100%;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        /* Safari */
+        -webkit-transition-duration: 0.5s;
+        /* Mozilla Firefox */
+        -moz-transition-duration: 0.5s;
+        /* Opera */
+        -o-transition-duration: 0.5s;
+        /* IE 9 */
+        -ms-transition-duration: 0.5s;
+        &:hover {
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+        }
+    }
+}

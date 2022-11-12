@@ -4,28 +4,25 @@
 }
 
 .App__background {
-    width: 70%;
+    width: 80%;
     margin: auto;
     padding: 40px;
-    border-radius: 20px;
-    background-color: rgb(233, 245, 250);
-}
-
-.App__list {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
+    border-radius: 10px;
+    // background-color: rgb(233, 245, 250);
     position: relative;
 }
 
+.App__list {
+}
+
 .App__list--avatar {
-    position: absolute !important;
-    right: 0;
-    cursor: pointer;
-    :hover {
-        opacity: 0.8;
-    }
+    // position: absolute !important;
+    // right: 40px;
+    // cursor: pointer;
+    // :hover {
+    //     opacity: 0.8;
+    // }
+    float: right;
 }
 
 .App__header {
@@ -34,13 +31,17 @@
     color: var(--primary-color);
 }
 
+.App__content {
+    text-align: center;
+}
+
 .App__Item {
     color: var(--white-color);
     background-color: var(--primary-color);
     text-align: center;
-    width: 300px;
-    padding: 10px;
-    margin: 20px 0;
+    width: 60%;
+    padding: 15px;
+    margin: 40px auto;
     border-radius: 10px;
     border: 1px solid #ccc;
     &:hover {
