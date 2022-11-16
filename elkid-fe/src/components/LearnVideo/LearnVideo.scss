@@ -8,9 +8,12 @@
     height: 90vh;
     margin: auto;
     border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 } 
 
 .LearnVd__nav {
+    margin: 10px 20px;
     display: flex;
     justify-content: space-between;
 } 
@@ -27,8 +30,8 @@
 
 .LearnVd__content--video {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 80%;
-    height: 70vh;
+    height: 65vh;
     border: none;
 }

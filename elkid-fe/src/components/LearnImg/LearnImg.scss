@@ -8,6 +8,8 @@
     height: 90vh;
     margin: auto;
     border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 
 .LearnImg__nav {
@@ -34,6 +36,7 @@
     input {
         width: 100%;
         cursor: pointer;
+        border-radius: 10px;
         transition-duration: 0.5s;
         /* Safari */
         -webkit-transition-duration: 0.5s;

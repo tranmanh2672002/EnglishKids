@@ -2,8 +2,8 @@ import './LearnImg.scss';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 
-import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import axios from 'axios';
@@ -38,7 +38,7 @@ function LearnImg() {
                                 <ArrowBackIcon />
                             </IconButton>
                         </Link>
-                        <Link to="/app" style={{ marginRight: '-30px' }}>
+                        <Link to="/app">
                             <IconButton aria-label="delete" size="large" color="secondary">
                                 <HomeIcon />
                             </IconButton>

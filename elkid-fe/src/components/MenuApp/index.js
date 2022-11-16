@@ -4,6 +4,11 @@ import './MenuApp.scss';
 import DefaultAvatar from '~/assets/images/defaultAvatar.png';
 import Tippy from '@tippyjs/react/headless';
 import { useState } from 'react';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import QuizIcon from '@mui/icons-material/Quiz';
+import StarsIcon from '@mui/icons-material/Stars';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
 
 function MenuApp() {
     const [visible, setVisible] = useState(false);
@@ -14,7 +19,10 @@ function MenuApp() {
 
     const handleClickLogout = () => {
         localStorage.setItem('login', 'false');
+        localStorage.setItem('id', '');
+        localStorage.setItem('name', '');
         navigate('/');
+        window.location.reload();
     };
 
     return (
@@ -29,8 +37,14 @@ function MenuApp() {
                         render={(attrs) => (
                             <div className="App__user--selection" tabIndex="-1" {...attrs}>
                                 <ul>
-                                    <li onClick={handleClickLogout}>Đăng xuất</li>
-                                    <li onClick={handleClickLogout}>Đăng xuất</li>
+                                    <li className="App__user--item">
+                                        <PersonIcon className="App__user--icon" />
+                                        {localStorage.getItem('name')}
+                                    </li>
+                                    <li onClick={handleClickLogout} className="App__user--item">
+                                        <LogoutIcon className="App__user--icon" />
+                                        Đăng xuất
+                                    </li>
                                 </ul>
                             </div>
                         )}
@@ -45,13 +59,16 @@ function MenuApp() {
                     <div className="App__list">
                         <div className="App__header">English Kids</div>
                         <div className="App__content">
-                            <Link to="/app/learn" className="App__Item btn-grad">
+                            <Link to="/app/learn" className="btn-grad App__Item">
+                                <FactCheckIcon className="App__Item--icon" />
                                 Chọn chủ đề
                             </Link>
-                            <Link to="/app/exam" className="App__Item btn-grad">
+                            <Link to="/app/exam" className="btn-grad App__Item">
+                                <QuizIcon className="App__Item--icon" />
                                 Bài kiểm tra
                             </Link>
-                            <Link to="/app/rank" className="App__Item btn-grad">
+                            <Link to="/app/rank" className="btn-grad App__Item">
+                                <StarsIcon className="App__Item--icon" />
                                 Xếp hạng
                             </Link>
                         </div>

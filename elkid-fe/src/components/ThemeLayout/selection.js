@@ -2,11 +2,13 @@ import './Selection.scss';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 import { IconButton } from '@mui/material';
-import { Link, useParams  } from 'react-router-dom';
+import ImageIcon from '@mui/icons-material/Image';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import { Link, useParams } from 'react-router-dom';
 
 function SelectionLearn() {
     const { id } = useParams();
-    return ( 
+    return (
         <>
             <div className="Selection__wrapper">
                 <div className="Selection__container">
@@ -23,26 +25,31 @@ function SelectionLearn() {
                         </Link>
                     </div>
                     <div className="Selection__header">Chọn hình thức học</div>
-                    <div  className="Selection__courses">
+                    <div className="Selection__courses">
                         <Link to={`/app/selection/learnImages/${id}`} className="Selection__course">
                             <div className="Selection__course--content">
-                                <span className="Selection__course--header">Hình ảnh</span>
+                                <span className="Selection__course--header">
+                                    <ImageIcon className='Selection__course--icon'/>
+                                    Hình ảnh
+                                </span>
                                 <span className="Selection__course--description">Những hình ảnh minh họa chủ đề</span>
                             </div>
                         </Link>
 
                         <Link to={`/app/selection/learnVideos/${id}`} className="Selection__course">
                             <div className="Selection__course--content">
-                                <span className="Selection__course--header">Video</span>
+                                <span className="Selection__course--header">
+                                    <OndemandVideoIcon className='Selection__course--icon'/>
+                                    Video
+                                </span>
                                 <span className="Selection__course--description">Những video minh họa chủ đề</span>
                             </div>
                         </Link>
-
                     </div>
                 </div>
             </div>
         </>
-     );
+    );
 }
 
 export default SelectionLearn;
