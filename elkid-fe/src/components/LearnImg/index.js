@@ -38,11 +38,11 @@ function LearnImg() {
                                 <ArrowBackIcon />
                             </IconButton>
                         </Link>
-                        <Link to="/app">
+                        {/* <Link to="/app">
                             <IconButton aria-label="delete" size="large" color="secondary">
                                 <HomeIcon />
                             </IconButton>
-                        </Link>
+                        </Link> */}
                     </div>
                     <div id="style-2" className="LearnImg__content">
                         {imagesArray.length ? (

@@ -34,11 +34,11 @@ function LearnVd() {
                                 <ArrowBackIcon />
                             </IconButton>
                         </Link>
-                        <Link to="/app">
+                        {/* <Link to="/app">
                             <IconButton aria-label="delete" size="large" color="secondary">
                                 <HomeIcon />
                             </IconButton>
-                        </Link>
+                        </Link> */}
                     </div>
                     {course.map((item) => {
                         return (
