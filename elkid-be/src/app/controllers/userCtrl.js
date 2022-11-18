@@ -17,7 +17,7 @@ const userCtrl = {
         return res.json({ msg: "Mật khẩu không chính xác", login: false });
       }
 
-      res.json({ msg: "Đăng nhập thành công", login: true });
+      res.json({ msg: "Đăng nhập thành công", login: true, id: user._id, username: user.name });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -27,7 +27,7 @@ const userCtrl = {
     try {
       const { name, username } = req.body;
 
-      console.log(name + ' ' + username);
+      console.log(name + " " + username);
 
       // check email is already exist
       const user = await Users.findOne({ username });
@@ -39,18 +39,26 @@ const userCtrl = {
       const passwordHash = await bcrypt.hash(req.body.password, 10);
       const newUser = new Users({
         name,
-        username, 
+        username,
         password: passwordHash,
       });
 
       // Save mongodb
       const saveUser = await newUser.save();
 
-      res.json({msg: "Đăng ký thành công", register: true });
+      res.json({ msg: "Đăng ký thành công", register: true });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
   },
+
+  getUser: async (req, res) => {
+    try {
+
+    } catch (error) {
+
+    }
+   },
 };
 
 module.exports = userCtrl;

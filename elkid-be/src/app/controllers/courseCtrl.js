@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const courses = require("../models/courseModel");
 const images = require("../models/imageModel");
 

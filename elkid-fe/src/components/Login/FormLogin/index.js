@@ -22,7 +22,10 @@ function FormLogin() {
                 setUsername('');
                 setPassword('');
                 localStorage.setItem('login', 'true');
+                localStorage.setItem('id', res.data.id);
+                localStorage.setItem('name', res.data.username);
                 navigate('/app');
+                window.location.reload();
             } else {
                 setError(res.data.msg);
                 setPassword('');

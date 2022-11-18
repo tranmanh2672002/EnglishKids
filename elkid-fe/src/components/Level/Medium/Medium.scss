@@ -1,0 +1,17 @@
+.MediumLevel__wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.MediumLevel__container {
+    margin: auto;
+    width: 70%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.MediumLevel__nav {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}

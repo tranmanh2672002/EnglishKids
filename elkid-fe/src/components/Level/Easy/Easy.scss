@@ -1,0 +1,151 @@
+.EasyLevel__wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.EasyLevel__container {
+    margin: auto;
+    width: 70%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.EasyLevel__nav {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.EasyLevel__content {
+}
+
+.EasyLevel__question {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .EasyLevel__question--icon {
+        background-color: #f1f1f1 !important;
+        border: 1px solid #f7f7f7;
+    }
+}
+
+.EasyLevel__answer {
+    display: flex;
+    padding: 10px 40px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    .EasyLevel__answer--wrapper {
+        width: 25%;
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .EasyLevel__answer--item {
+            height: 200px;
+            border-radius: 10px;
+
+            input {
+                border-radius: 10px;
+                border: 2px solid #f7f7f7;
+                width: 100%;
+                height: 100%;
+            }
+            &:hover {
+                border: 2px solid #84d8ff;
+            }
+        }
+        .EasyLevel__answer--item-active {
+            input {
+                border: 2px solid #84d8ff;
+            }
+            &:hover {
+                border: none;
+            }
+        }
+    }
+}
+
+.EasyLevel__bottom {
+    margin: 20px 0;
+    height: 100px;
+
+    .EasyLevel__bottom--correct {
+        width: 100%;
+        height: 100%;
+        background-color: #d7ffb8;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #58a700;
+
+        .EasyLevel__bottom--left {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .EasyLevel__bottom--left-icon {
+                background-color: #fff;
+                margin-right: 10px;
+            }
+        }
+    
+        .EasyLevel__bottom--btn {
+            height: 46px;
+            background-color: #58cc02;
+        }
+    
+        .EasyLevel__bottom--btn:hover {
+            background-color: #61e002;
+        }
+    }
+
+    .EasyLevel__bottom--wrong {
+        width: 100%;
+        height: 100%;
+        background-color: #ffdfe0;
+        color: #ea2b2b;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .EasyLevel__bottom--left {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .EasyLevel__bottom--left-icon {
+                background-color: #fff;
+                margin-right: 10px;
+            }
+        }
+    
+        .EasyLevel__bottom--btn {
+            height: 46px;
+            border-radius: 8px;
+            background-color: #ff5252;
+        }
+    
+        .EasyLevel__bottom--btn:hover {
+            background-color: #ff5252;
+        }
+    }
+
+    .EasyLevel__bottom--check {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        
+    
+        .EasyLevel__bottom--btn {
+            height: 46px;
+            border-radius: 8px;
+        }
+    
+        .EasyLevel__bottom--btn:hover {
+        }
+    }
+
+}

@@ -1,5 +1,7 @@
+import LevelExam from "~/components/Level";
+
 function Exam() {
-    return ( <h2>Exam</h2> );
+    return ( <LevelExam/> );
 }
 
 export default Exam;
