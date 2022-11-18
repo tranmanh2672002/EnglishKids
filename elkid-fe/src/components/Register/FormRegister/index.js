@@ -125,7 +125,7 @@ function FormRegister() {
                         Đăng ký
                     </Button>
                     <Link className="register__btn-login " to="/login">
-                        Đăng nhập
+                        Bạn đã có tài khoản? - Đăng nhập
                     </Link>
                 </ValidatorForm>
             </div>

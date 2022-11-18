@@ -31,8 +31,11 @@
     display: block;
     text-align: center;
     font-size: 1.2rem;
-    text-decoration: underline;
     margin-top: 20px;
+    &:hover {
+        color: #880c9e;
+        text-decoration: underline;
+    }
 }
 
 
