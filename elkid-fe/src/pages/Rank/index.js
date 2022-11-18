@@ -1,5 +1,7 @@
+import Ranking from '~/components/Ranking';
+
 function Rank() {
-    return ( <h2>Rank</h2> );
+    return <Ranking />;
 }
 
 export default Rank;
