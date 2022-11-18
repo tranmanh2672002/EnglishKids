@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 export default function HeaderAppBar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" className="appBar">
+            <AppBar position='fixed' className="appBar">
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         EngLish Kids
