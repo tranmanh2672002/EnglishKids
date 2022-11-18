@@ -1,7 +1,16 @@
-import './Intro.scss';
+import React from 'react'
+import Slider from './slider.js'
+import Main from './Main.js'
+import Footer from './Footer.js'
+import ScrollToTop from './ScrollToTop';
 
-function Intro() {
-    return ( <h2>Intro</h2> );
+export default function Intro() {
+    return (
+        <div id="intro" >
+            <ScrollToTop />
+            <Slider />
+            <Main />
+            <Footer />
+        </div>
+    )
 }
-
-export default Intro;
