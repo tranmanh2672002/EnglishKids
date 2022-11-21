@@ -1,4 +1,5 @@
 import './Easy.scss';
+import ModalIntroImage from '~/assets/images/modalIntro.jpg';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import CheckIcon from '@mui/icons-material/Check';
@@ -27,6 +28,21 @@ const styleModal = {
     p: 4,
 };
 
+const styleModalIntro = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#fff',
+    borderRadius: 2,
+    boxShadow: 20,
+    p: 4,
+    zIndex: 100,
+    display: 'flex',
+    alignItems: 'center',
+    outline: 'none',
+};
+
 function EasyLevel() {
     const [answer, setAnswer] = useState();
     const [answerCorrect, setAnswerCorrect] = useState();
@@ -38,6 +54,8 @@ function EasyLevel() {
     const [wrong, setWrong] = useState(false);
     const [check, setCheck] = useState(false);
     const [score, setScore] = useState(0);
+    const [openScore, setOpenScore] = useState(false);
+    const [openModalIntro, setOpenModalIntro] = useState(true);
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -45,7 +63,7 @@ function EasyLevel() {
 
     const handleClickAgree = () => {
         navigate('/app/exam');
-    }
+    };
 
     const navigate = useNavigate();
 
@@ -75,6 +93,12 @@ function EasyLevel() {
         }
     };
 
+    const handleClickAgain = () => {
+        navigate('/app/exam/easy');
+        window.location.reload();
+    };
+    console.log(score);
+
     const handleClickNext = () => {
         console.log(curr);
         setCurr(curr + 1);
@@ -88,8 +112,7 @@ function EasyLevel() {
             setCheck(false);
             setAnswer();
         } else {
-            localStorage.setItem('score', score);
-            navigate('/app/exam/score');
+            setOpenScore(true);
         }
     };
 
@@ -100,6 +123,28 @@ function EasyLevel() {
     return (
         <div className="EasyLevel__wrapper">
             <div className="EasyLevel__container">
+                <Modal
+                    open={openModalIntro}
+                    onClose={() => setOpenModalIntro(false)}
+                    aria-labelledby="keep-mounted-modal-title"
+                    aria-describedby="keep-mounted-modal-description"
+                >
+                    <Box sx={styleModalIntro}>
+                        <input type="image" src={ModalIntroImage} style={{ width: '300px' }} alt="image" />
+                        <Box>
+                            <IconButton
+                                sx={{backgroundColor: '#fff', color: '#000', border: '1px solid #ccc'}}
+                                aria-label="volume"
+                                color="info"
+                                size="large"
+                            >
+                                <VolumeUpIcon />
+                            </IconButton>
+                            <Typography sx={{mt: 2, mb: 2, color: '#000'}} variant='h5'>Nhấn vào biểu tương cái loa để nghe</Typography>
+                            <Button onClick={() => setOpenModalIntro(false)} variant='contained' color="secondary">Đồng ý</Button>
+                        </Box>
+                    </Box>
+                </Modal>
                 <div className="EasyLevel__nav">
                     {/* /app/exam */}
                     <Link to="" onClick={handleOpen}>
@@ -127,11 +172,7 @@ function EasyLevel() {
                             >
                                 Bạn thực sự muốn thoát ?
                             </Typography>
-                            <Typography
-                                id="keep-mounted-modal-description"
-                                color={'#666'}
-                                sx={{ mt: 2 }}
-                            >
+                            <Typography id="keep-mounted-modal-description" color={'#666'} sx={{ mt: 2 }}>
                                 Nếu thoát bài thi, kết quả sẽ không được công nhận
                             </Typography>
                             <Stack direction="row" spacing={2} justifyContent="right" pt={2}>
@@ -146,103 +187,146 @@ function EasyLevel() {
                     </Modal>
                 </div>
                 {questionCurr ? (
-                    <div className="EasyLevel__content">
-                        <div className="EasyLevel__question">
-                            <IconButton
-                                className="EasyLevel__question--icon"
-                                aria-label="volume"
-                                color="secondary"
-                                size="large"
-                                data-sound={questionCurr.voice}
-                                onClick={handleClickVolume}
-                            >
-                                <VolumeUpIcon />
-                            </IconButton>
-                        </div>
-                        <div className="EasyLevel__answer">
-                            {questionCurr.questions.map((question) => {
-                                return (
-                                    <div
-                                        key={question.id}
-                                        className={'EasyLevel__answer--wrapper'}
-                                        onClick={() => {
-                                            setAnswer(question.id);
-                                            if (!correct && !wrong) {
-                                                setCheck(true);
-                                            }
-                                        }}
-                                    >
+                    <>
+                        <div className="EasyLevel__content">
+                            <div className="EasyLevel__question">
+                                <IconButton
+                                    className="EasyLevel__question--icon"
+                                    aria-label="volume"
+                                    color="secondary"
+                                    size="large"
+                                    data-sound={questionCurr.voice}
+                                    onClick={handleClickVolume}
+                                >
+                                    <VolumeUpIcon />
+                                </IconButton>
+                            </div>
+                            <div className="EasyLevel__answer">
+                                {questionCurr.questions.map((question) => {
+                                    return (
                                         <div
-                                            className={
-                                                answer === question.id
-                                                    ? 'EasyLevel__answer--item EasyLevel__answer--item-active'
-                                                    : 'EasyLevel__answer--item'
-                                            }
+                                            key={question.id}
+                                            className={'EasyLevel__answer--wrapper'}
+                                            onClick={() => {
+                                                setAnswer(question.id);
+                                                if (!correct && !wrong) {
+                                                    setCheck(true);
+                                                }
+                                            }}
                                         >
-                                            <input type="image" src={question.image} alt="image" />
+                                            <div
+                                                className={
+                                                    answer === question.id
+                                                        ? 'EasyLevel__answer--item EasyLevel__answer--item-active'
+                                                        : 'EasyLevel__answer--item'
+                                                }
+                                            >
+                                                <input type="image" src={question.image} alt="image" />
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="EasyLevel__bottom">
-                            {correct && (
-                                <div className="EasyLevel__bottom--correct">
-                                    <div className="EasyLevel__bottom--left">
-                                        <IconButton
-                                            className="EasyLevel__bottom--left-icon"
+                                    );
+                                })}
+                            </div>
+                            <div className="EasyLevel__bottom">
+                                {correct && (
+                                    <div className="EasyLevel__bottom--correct">
+                                        <div className="EasyLevel__bottom--left">
+                                            <IconButton
+                                                className="EasyLevel__bottom--left-icon"
+                                                size="large"
+                                                color="success"
+                                            >
+                                                <CheckIcon />
+                                            </IconButton>
+                                            <div className="EasyLevel__bottom--title">Đáp án chính xác</div>
+                                        </div>
+                                        <Button
+                                            className="EasyLevel__bottom--btn"
                                             size="large"
-                                            color="success"
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleClickNext}
                                         >
-                                            <CheckIcon />
-                                        </IconButton>
-                                        <div className="EasyLevel__bottom--title">Đáp án chính xác</div>
+                                            Tiếp tục
+                                        </Button>
                                     </div>
-                                    <Button
-                                        className="EasyLevel__bottom--btn"
-                                        size="large"
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleClickNext}
-                                    >
-                                        Tiếp tục
-                                    </Button>
-                                </div>
-                            )}
-                            {wrong && (
-                                <div className="EasyLevel__bottom--wrong">
-                                    <div className="EasyLevel__bottom--left">
-                                        <IconButton className="EasyLevel__bottom--left-icon" size="large" color="error">
-                                            <CloseIcon />
-                                        </IconButton>
-                                        <div className="EasyLevel__bottom--title">Đáp án sai</div>
+                                )}
+                                {wrong && (
+                                    <div className="EasyLevel__bottom--wrong">
+                                        <div className="EasyLevel__bottom--left">
+                                            <IconButton
+                                                className="EasyLevel__bottom--left-icon"
+                                                size="large"
+                                                color="error"
+                                            >
+                                                <CloseIcon />
+                                            </IconButton>
+                                            <div className="EasyLevel__bottom--title">Đáp án sai</div>
+                                        </div>
+                                        <Button
+                                            className="EasyLevel__bottom--btn"
+                                            size="large"
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleClickNext}
+                                        >
+                                            Tiếp tục
+                                        </Button>
                                     </div>
-                                    <Button
-                                        className="EasyLevel__bottom--btn"
-                                        size="large"
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleClickNext}
-                                    >
-                                        Tiếp tục
-                                    </Button>
-                                </div>
-                            )}
-                            {check && (
-                                <div className="EasyLevel__bottom--check">
-                                    <Button
-                                        className="EasyLevel__bottom--btn"
-                                        size="large"
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleClickCheck}
-                                    >
-                                        Kiểm tra
-                                    </Button>
-                                </div>
-                            )}
+                                )}
+                                {check && (
+                                    <div className="EasyLevel__bottom--check">
+                                        <Button
+                                            className="EasyLevel__bottom--btn"
+                                            size="large"
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleClickCheck}
+                                        >
+                                            Kiểm tra
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                        <Modal
+                            open={openScore}
+                            aria-labelledby="keep-mounted-modal-title"
+                            aria-describedby="keep-mounted-modal-description"
+                        >
+                            <Box sx={styleModal}>
+                                <Typography
+                                    id="keep-mounted-modal-title"
+                                    color={'var(--primary-color)'}
+                                    variant="h6"
+                                    component="h2"
+                                    sx={{ textAlign: 'center' }}
+                                >
+                                    Điểm số của bạn
+                                </Typography>
+                                <Typography
+                                    id="keep-mounted-modal-description"
+                                    color={'#666'}
+                                    sx={{ mt: 2, textAlign: 'center' }}
+                                >
+                                    {score}/100
+                                </Typography>
+                                <Stack direction="row" spacing={2} justifyContent="center" pt={2}>
+                                    <Button
+                                        className="btn--cancel"
+                                        color="secondary"
+                                        variant="contained"
+                                        onClick={handleClickAgree}
+                                    >
+                                        Trở về
+                                    </Button>
+                                    <Button color="secondary" variant="contained" onClick={handleClickAgain}>
+                                        Thi lại
+                                    </Button>
+                                </Stack>
+                            </Box>
+                        </Modal>
+                    </>
                 ) : (
                     <h2>No question</h2>
                 )}

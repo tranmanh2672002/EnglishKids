@@ -9,7 +9,6 @@ import Login from '~/pages/Login';
 import Medium from '~/pages/Meduim';
 import Rank from '~/pages/Rank';
 import Register from '~/pages/Register';
-import ScorePage from '~/pages/ScorePage';
 import Selection from '~/pages/Selection';
 
 const publicRoutes = [
@@ -56,10 +55,6 @@ const privateRoutes = [
     {
         path: '/app/exam/easy',
         component: Easy,
-    },
-    {
-        path: '/app/exam/score',
-        component: ScorePage,
     },
     {
         path: '/app/exam/medium',
