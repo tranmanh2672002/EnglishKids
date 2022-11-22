@@ -1,6 +1,7 @@
 .App__wrapper {
     height: 100vh;
     display: flex;
+    
 }
 
 .App__background {
@@ -11,6 +12,7 @@
     // background-color: rgb(233, 245, 250);
     position: relative;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: #ffffff;
 }
 
 .App__list {
