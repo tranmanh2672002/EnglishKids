@@ -9,7 +9,6 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     background-color: #ffffff;
-
 }
 
 .level__nav {
@@ -23,12 +22,12 @@
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 40px;
+    font-weight: bold;
 }
 
 .level__content {
-    max-height:  60vh;
+    max-height: 60vh;
 }
-
 
 .level__course {
     margin: auto;

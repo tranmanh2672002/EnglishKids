@@ -3,10 +3,9 @@ import React, { Component } from 'react';
 
 import education from '~/assets/images/education.png';
 import communication from '~/assets/images/communication.png';
-import speak from '~/assets/images/speak.png';
-import reading from '~/assets/images/reading.png';
-import listen from '~/assets/images/listen.png';
-import writing from '~/assets/images/writing.png';
+
+import skill from '~/assets/images/skill.png';
+
 import Slider from 'react-slick';
 import { Button, Box, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
@@ -71,16 +70,7 @@ export default class slider extends Component {
                     <Box key={3}>
                         <Box className='slider-box'>
                             <Box className="wrapper-img img-skill">
-                                <Box display="flex">
-                                    <Box>
-                                        <img src={listen} alt="listen" />
-                                        <img src={speak} alt="speak" />
-                                    </Box>
-                                    <Box>
-                                        <img src={reading} alt="reading" />
-                                        <img src={writing} alt="writing" />
-                                    </Box>
-                                </Box>
+                                <img src={skill} alt="4 skill" />
                             </Box>
                             <Box className="wrapper-text" >
                                 <Typography
