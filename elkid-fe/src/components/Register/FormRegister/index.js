@@ -25,7 +25,7 @@ function FormRegister() {
         });
     });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         try {
             const res = await axios.post('http://localhost:3001/user/register', {
                 name,

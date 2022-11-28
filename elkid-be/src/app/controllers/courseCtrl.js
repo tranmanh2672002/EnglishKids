@@ -8,10 +8,10 @@ const courseCtrl = {
       if (allCourses) {
         res.json(allCourses);
       } else {
-        res.send("Dell co cl gi");
+        res.send("Not courses");
       }
     } catch (err) {
-      res.send("Dell co cl gi");
+      return res.status(500).json({ msg: err.message });
     }
   },
 

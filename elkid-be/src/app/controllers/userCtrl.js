@@ -17,7 +17,12 @@ const userCtrl = {
         return res.json({ msg: "Mật khẩu không chính xác", login: false });
       }
 
-      res.json({ msg: "Đăng nhập thành công", login: true, id: user._id, username: user.name });
+      res.json({
+        msg: "Đăng nhập thành công",
+        login: true,
+        id: user._id,
+        username: user.name,
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -52,13 +57,17 @@ const userCtrl = {
     }
   },
 
-  getUser: async (req, res) => {
+  getAllUsers: async (req, res) => {
     try {
-
+      const users = await Users.find();
+      if (!users) {
+        res.json({ msg: "Không tồn tại"});
+      }
+      res.json(users);
     } catch (error) {
-
+      return res.status(500).json({ msg: error.message });
     }
-   },
+  },
 };
 
 module.exports = userCtrl;

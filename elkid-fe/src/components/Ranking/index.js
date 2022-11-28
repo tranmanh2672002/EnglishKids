@@ -1,16 +1,51 @@
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 import { IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import user from '~/assets/images/reading.png'
-import coin from '~/assets/images/coin.png'
-
+import userImage from '~/assets/images/reading.png';
+import coin from '~/assets/images/coin.png';
 
 import './index.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Ranking() {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const res = await axios.get('http://localhost:3001/user/allUsers');
+                setUsers(res.data);
+            } catch (err) {
+                console.error('fe: ' + err.message);
+            }
+        };
+        getData();
+    }, []);
+
+    useEffect(() => {
+        if (users) {
+            users.sort(compareNumber);
+        }
+    }, [users]);
+
+    const compareNumber = (a, b) => {
+        const scoreA = a.score;
+        const scoreB = b.score;
+
+        let comparison = 0;
+        if (scoreA > scoreB) {
+            comparison = 1;
+        } else if (scoreA < scoreB) {
+            comparison = -1;
+        }
+        return comparison;
+    };
+
+    console.log(users);
+
     return (
         <>
             <div className="Ranking__wrapper">
@@ -29,84 +64,33 @@ function Ranking() {
                     </div>
                     <div className="Ranking__header">Xếp hạng </div>
                     <div className="Ranking__main">
-                        {/* <div className="Ranking__title-top">
-                        <ul className="Ranking__title-item">
-                            <li>#</li>
-                            <li>Tài khoản</li>
-                            <li>Điểm</li>
-                        </ul>
-                             </div> */}
-                        <div className="Rank-top" >
-                            <div className="first">
-                                <div className="top">2</div>
-                                <img src={user} alt="user"></img>
-                                <h4 >Anh Minh</h4>
-                                <h4>
-                                    <img src={coin} alt="coin"></img>
-                                    400</h4>
-                            </div>
-                            <div className="second">
-                                <div className="top">1</div>
-                                <img src={user} alt="user"></img>
-                                <div>
-                                    <h4>Anh Minh</h4>
-                                    <h4>
-                                        <img src={coin} alt="coin"></img>
-                                        500</h4>
-                                </div>
-                            </div>
-                            <div className="third">
-                                <div className="top">3</div>
-                                <img src={user} alt="user"></img>
-                                <div>
-                                    <h4>Anh Minh</h4>
-                                    <h4>
-                                        <img src={coin} alt="coin"></img>
-                                        300</h4>
-                                </div>
-                            </div>
-                        </div>
                         <div className="Ranking__list">
-                            <div className="Ranking__list-main">
-                                <div className="Ranking__list-order">
-                                    4</div>
+                            {users.map((user, index) => {
+                                return (
+                                    <div key={user._id} className="Ranking__list-main">
+                                        <div className="Ranking__list-order">{index + 1}</div>
+                                        <div className="Ranking__list-content">
+                                            <img src={userImage} alt="user"></img>
+                                            {user.name}
+                                        </div>
+                                        <div className="Ranking__list-point">
+                                            {user.score}
+                                            <img src={coin} alt="coin"></img>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                            {/* <div className="Ranking__list-main">
+                                <div className="Ranking__list-order">4</div>
                                 <div className="Ranking__list-content">
                                     <img src={user} alt="user"></img>
                                     Anh Minh
                                 </div>
                                 <div className="Ranking__list-point">
                                     <img src={coin} alt="coin"></img>
-
                                     1000
                                 </div>
-                            </div>
-
-                            <div className="Ranking__list-main">
-                                <div className="Ranking__list-order">
-                                    5</div>
-                                <div className="Ranking__list-content">
-                                    <img src={user} alt="user"></img>
-                                    Anh Minh
-                                </div>
-                                <div className="Ranking__list-point">
-                                    <img src={coin} alt="coin"></img>
-
-                                    1000
-                                </div>
-                            </div>
-                            <div className="Ranking__list-main">
-                                <div className="Ranking__list-order">
-                                    6</div>
-                                <div className="Ranking__list-content">
-                                    <img src={user} alt="user"></img>
-                                    Anh Minh
-                                </div>
-                                <div className="Ranking__list-point">
-                                    <img src={coin} alt="coin"></img>
-
-                                    1000
-                                </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -114,6 +98,5 @@ function Ranking() {
         </>
     );
 }
-
 
 export default Ranking;
