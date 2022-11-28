@@ -60,12 +60,26 @@ function EasyLevel() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
 
-    const handleClickAgree = () => {
+    
+    const handleClickAgree = async () => {
+        const updateScore = Number(score) + Number(localStorage.getItem('score'));
+        localStorage.setItem('score', updateScore);
+        
+        try {
+            axios.post(`http://localhost:3001/user/updateScore/${localStorage.getItem('id')}`, {
+                score: updateScore,
+            })
+        }
+        catch (e) {
+            console.log(e);
+        }
         navigate('/app/exam');
+        window.location.reload();
+
     };
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         const getData = async () => {
@@ -94,6 +108,17 @@ function EasyLevel() {
     };
 
     const handleClickAgain = () => {
+        const updateScore = Number(score) + Number(localStorage.getItem('score'));
+        localStorage.setItem('score', updateScore);
+        
+        try {
+            axios.post(`http://localhost:3001/user/updateScore/${localStorage.getItem('id')}`, {
+                score: updateScore,
+            })
+        }
+        catch (e) {
+            console.log(e);
+        }
         navigate('/app/exam/easy');
         window.location.reload();
     };

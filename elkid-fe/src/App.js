@@ -8,9 +8,9 @@ function App() {
             <div className="App">
                 {localStorage.getItem('login') === 'true' ? (
                     <Routes>
-                        {publicRoutes.map((route, i) => {
+                        {/* {publicRoutes.map((route, i) => {
                             return <Route key={i} path={route.path} element={<route.component />} />;
-                        })}
+                        })} */}
                         {privateRoutes.map((route, i) => {
                             return <Route key={i} path={route.path} element={<route.component />} />;
                         })}

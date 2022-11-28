@@ -22,6 +22,7 @@ const userCtrl = {
         login: true,
         id: user._id,
         username: user.name,
+        score: user.score,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -61,11 +62,24 @@ const userCtrl = {
     try {
       const users = await Users.find();
       if (!users) {
-        res.json({ msg: "Không tồn tại"});
+        res.json({ msg: "Không tồn tại" });
       }
       res.json(users);
     } catch (error) {
       return res.status(500).json({ msg: error.message });
+    }
+  },
+
+  updateScore: async (req, res) => {
+    try {
+      const user = await Users.findOne({ _id: req.params.id });
+      console.log(req.body);
+      if (!user) {
+        res.json({ msg: "user not found" });
+      }
+      await Users.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
     }
   },
 };

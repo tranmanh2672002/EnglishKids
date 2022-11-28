@@ -24,14 +24,19 @@ const publicRoutes = [
         path: '/register',
         component: Register,
     },
-    {
-        path: '/app',
-        component: AppMain,
-    },
+    
     
 ];
 
 const privateRoutes = [
+    {
+        path: '/',
+        component: AppMain,
+    },
+    {
+        path: '/app',
+        component: AppMain,
+    },
     {
         path: '/app/learn',
         component: LearnTheme,

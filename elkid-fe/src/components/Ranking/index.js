@@ -25,26 +25,22 @@ function Ranking() {
         getData();
     }, []);
 
-    useEffect(() => {
-        if (users) {
-            users.sort(compareNumber);
-        }
-    }, [users]);
-
     const compareNumber = (a, b) => {
         const scoreA = a.score;
         const scoreB = b.score;
 
         let comparison = 0;
-        if (scoreA > scoreB) {
+        if (scoreA < scoreB) {
             comparison = 1;
-        } else if (scoreA < scoreB) {
+        } else if (scoreA > scoreB) {
             comparison = -1;
         }
         return comparison;
     };
 
-    console.log(users);
+    if (users) {
+        users.sort(compareNumber);
+    }
 
     return (
         <>
@@ -80,17 +76,6 @@ function Ranking() {
                                     </div>
                                 );
                             })}
-                            {/* <div className="Ranking__list-main">
-                                <div className="Ranking__list-order">4</div>
-                                <div className="Ranking__list-content">
-                                    <img src={user} alt="user"></img>
-                                    Anh Minh
-                                </div>
-                                <div className="Ranking__list-point">
-                                    <img src={coin} alt="coin"></img>
-                                    1000
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </div>

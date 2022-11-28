@@ -24,6 +24,7 @@ function FormLogin() {
                 localStorage.setItem('login', 'true');
                 localStorage.setItem('id', res.data.id);
                 localStorage.setItem('name', res.data.username);
+                localStorage.setItem('score', res.data.score);
                 navigate('/app');
                 window.location.reload();
             } else {
