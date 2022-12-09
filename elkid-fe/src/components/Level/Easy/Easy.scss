@@ -23,10 +23,14 @@
 
 .EasyLevel__question {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: left;
+    align-items: center;
+    margin: 0 40px 5px;
+    color: #333;
+    font-weight: 500;
 
     .EasyLevel__question--icon {
+        margin-left: 20px;
         color: #000 !important;
         background-color: #f1f1f1 !important;
         border: 1px solid #f7f7f7;

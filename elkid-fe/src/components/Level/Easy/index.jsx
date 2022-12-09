@@ -62,24 +62,20 @@ function EasyLevel() {
     const handleClose = () => setOpen(false);
     const navigate = useNavigate();
 
-    
     const handleClickAgree = async () => {
         const updateScore = Number(score) + Number(localStorage.getItem('score'));
         localStorage.setItem('score', updateScore);
-        
+
         try {
             axios.post(`http://localhost:3001/user/updateScore/${localStorage.getItem('id')}`, {
                 score: updateScore,
-            })
-        }
-        catch (e) {
+            });
+        } catch (e) {
             console.log(e);
         }
         navigate('/app/exam');
         window.location.reload();
-
     };
-
 
     useEffect(() => {
         const getData = async () => {
@@ -110,13 +106,12 @@ function EasyLevel() {
     const handleClickAgain = () => {
         const updateScore = Number(score) + Number(localStorage.getItem('score'));
         localStorage.setItem('score', updateScore);
-        
+
         try {
             axios.post(`http://localhost:3001/user/updateScore/${localStorage.getItem('id')}`, {
                 score: updateScore,
-            })
-        }
-        catch (e) {
+            });
+        } catch (e) {
             console.log(e);
         }
         navigate('/app/exam/easy');
@@ -158,15 +153,19 @@ function EasyLevel() {
                         <input type="image" src={ModalIntroImage} style={{ width: '300px' }} alt="image" />
                         <Box>
                             <IconButton
-                                sx={{backgroundColor: '#fff', color: '#000', border: '1px solid #ccc'}}
+                                sx={{ backgroundColor: '#fff', color: '#000', border: '1px solid #ccc' }}
                                 aria-label="volume"
                                 color="info"
                                 size="large"
                             >
                                 <VolumeUpIcon />
                             </IconButton>
-                            <Typography sx={{mt: 2, mb: 2, color: '#000'}} variant='h5'>Nhấn vào biểu tương cái loa để nghe</Typography>
-                            <Button onClick={() => setOpenModalIntro(false)} variant='contained' color="secondary">Đồng ý</Button>
+                            <Typography sx={{ mt: 2, mb: 2, color: '#000' }} variant="h5">
+                                Nhấn vào biểu tương cái loa để nghe
+                            </Typography>
+                            <Button onClick={() => setOpenModalIntro(false)} variant="contained" color="secondary">
+                                Đồng ý
+                            </Button>
                         </Box>
                     </Box>
                 </Modal>
@@ -215,6 +214,7 @@ function EasyLevel() {
                     <>
                         <div className="EasyLevel__content">
                             <div className="EasyLevel__question">
+                                Câu {curr}:
                                 <IconButton
                                     className="EasyLevel__question--icon"
                                     aria-label="volume"

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const questionEasy = new mongoose.Schema (
+const questionMedium = new mongoose.Schema (
   {
     stt: {
       type: Number,
@@ -21,4 +21,4 @@ const questionEasy = new mongoose.Schema (
   }
 );
 
-module.exports = mongoose.model("question-easies", questionEasy);
+module.exports = mongoose.model("question-mediums", questionMedium);

@@ -17,3 +17,139 @@
     display: flex;
     justify-content: space-between;
 }
+
+.MediumLevel__content {
+}
+
+.MediumLevel__question {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0 40px 5px;
+    color: #333;
+    font-weight: 500;
+
+    .MediumLevel__question--icon {
+        margin-left: 20px;
+        color: #000 !important;
+        background-color: #f1f1f1 !important;
+        border: 1px solid #f7f7f7;
+    }
+}
+
+.MediumLevel__answer {
+    display: flex;
+    padding: 10px 40px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    .MediumLevel__answer--wrapper {
+        width: 25%;
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .MediumLevel__answer--item {
+            height: 200px;
+            border-radius: 10px;
+
+            input {
+                border-radius: 10px;
+                border: 2px solid #f7f7f7;
+                width: 100%;
+                height: 100%;
+            }
+            &:hover {
+                border: 2px solid #84d8ff;
+            }
+        }
+        .MediumLevel__answer--item-active {
+            input {
+                border: 2px solid #84d8ff;
+            }
+            &:hover {
+                border: none;
+            }
+        }
+    }
+}
+
+.MediumLevel__bottom {
+    margin: 20px 0;
+    height: 100px;
+
+    .MediumLevel__bottom--correct {
+        width: 100%;
+        height: 100%;
+        background-color: #d7ffb8;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #58a700;
+
+        .MediumLevel__bottom--left {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .MediumLevel__bottom--left-icon {
+                background-color: #fff;
+                margin-right: 10px;
+            }
+        }
+    
+        .MediumLevel__bottom--btn {
+            background-color: #58cc02;
+        }
+    
+        .MediumLevel__bottom--btn:hover {
+            background-color: #61e002;
+        }
+    }
+
+    .MediumLevel__bottom--wrong {
+        width: 100%;
+        height: 100%;
+        background-color: #ffdfe0;
+        color: #ea2b2b;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .MediumLevel__bottom--left {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .MediumLevel__bottom--left-icon {
+                background-color: #fff;
+                margin-right: 10px;
+            }
+        }
+    
+        .MediumLevel__bottom--btn {
+            border-radius: 8px;
+            background-color: #ff5252;
+        }
+    
+        .MediumLevel__bottom--btn:hover {
+            background-color: #ff5252;
+        }
+    }
+
+    .MediumLevel__bottom--check {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        
+    
+        .MediumLevel__bottom--btn {
+            border-radius: 8px;
+        }
+    
+        .MediumLevel__bottom--btn:hover {
+        }
+    }
+
+}

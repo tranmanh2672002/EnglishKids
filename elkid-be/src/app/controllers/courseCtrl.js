@@ -17,7 +17,7 @@ const courseCtrl = {
 
   getCourseImages: async (req, res) => {
     try {
-      const course = await courses.find({ _id: req.params.id });
+      const course = await courses.findOne({ _id: req.params.id });
       const imageArray = await images.find({ id: req.params.id });
       if (course && imageArray) {
         return res.json({ course, imageArray });

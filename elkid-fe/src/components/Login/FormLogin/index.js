@@ -88,7 +88,7 @@ function FormLogin() {
                         <Link className="formLogin__link-separate" to="/register">
                             Đăng ký
                         </Link>
-                        <Link to="">Quên mật khẩu?</Link>
+                        {/* <Link to="">Quên mật khẩu?</Link> */}
                     </div>
 
                     {/* Submit */}
