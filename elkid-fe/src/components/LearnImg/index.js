@@ -1,17 +1,39 @@
 import './LearnImg.scss';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import HomeIcon from '@mui/icons-material/Home';
+import ModalIntroImage from '~/assets/images/modalIntro.jpg';
 
-import { IconButton, Typography } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
 import axios from 'axios';
+
+const styleModalIntro = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#fff',
+    borderRadius: 2,
+    boxShadow: 20,
+    p: 4,
+    zIndex: 100,
+    display: 'flex',
+    alignItems: 'center',
+    outline: 'none',
+};
+
+
 
 function LearnImg() {
     const { id } = useParams();
     const [imagesArray, setImagesArray] = useState([]);
     const [course, setCourse] = useState('Chủ đề');
+    const [openModalIntro, setOpenModalIntro] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
@@ -74,6 +96,24 @@ function LearnImg() {
                     </div>
                 </div>
             </div>
+            <Modal
+                    open={openModalIntro}
+                    onClose={() => setOpenModalIntro(false)}
+                    aria-labelledby="keep-mounted-modal-title"
+                    aria-describedby="keep-mounted-modal-description"
+                >
+                    <Box sx={styleModalIntro}>
+                        <input type="image" src={ModalIntroImage} style={{ width: '300px' }} alt="image" />
+                        <Box>
+                            <Typography sx={{ mt: 2, mb: 2, color: '#000' }} variant="h5">
+                                Nhấn vào hình ảnh để nghe
+                            </Typography>
+                            <Button onClick={() => setOpenModalIntro(false)} variant="contained" color="secondary">
+                                Đồng ý
+                            </Button>
+                        </Box>
+                    </Box>
+                </Modal>
         </>
     );
 }
